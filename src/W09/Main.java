@@ -3,6 +3,7 @@ package W09;
 public class Main {
     public static void main(String[] args) {
         {
+            //Test git to bedzie pierwszy commit hihi
             //Paradygmat programowania oop zasadza się na tworzeniu obiektów które zawierają dane i metody.
 
             //jak nie ma konstruktora to sie dane new Cookie() bez parametru i tworzy sie sam domyślny pusty konstruktor.
