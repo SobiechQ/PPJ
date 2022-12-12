@@ -1,5 +1,4 @@
 package W10;
-
 public class Ciastko {
     int waga;
     String skladnik;

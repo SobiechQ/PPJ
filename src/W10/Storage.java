@@ -1,5 +1,4 @@
 package W10;
-
 public class Storage {
     Ciastko[] ciastkos = new Ciastko[100];
     int ciastkoCount=0;
