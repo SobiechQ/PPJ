@@ -1,3 +1,5 @@
+package W09;
+
 public class Cookie {
     String nazwa;
     int iloscRodzynek;

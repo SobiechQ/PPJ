@@ -1,3 +1,5 @@
+package W09;
+
 public class Concept {
     int dana1;
     int dana2;
