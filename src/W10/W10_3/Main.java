@@ -12,15 +12,15 @@ public class Main {
     }
     public static int[] bubbleStort(int[] arr, int toSort){
         int tmp;
+        if(toSort<=1){
+            return arr;
+        }
         for (int i = 1; i < toSort; i++) {
             if(arr[i]<arr[i-1]){
                 tmp=arr[i];
                 arr[i]=arr[i-1];
                 arr[i-1]=tmp;
             }
-        }
-        if(toSort<=1){
-            return arr;
         }
         return bubbleStort(arr, toSort-1);
     }
