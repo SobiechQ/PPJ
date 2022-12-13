@@ -1,4 +1,4 @@
-package W10_1;
+package W10.W10_1;
 
 public class Item {
     int val1;
