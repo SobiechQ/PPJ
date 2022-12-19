@@ -1,6 +1,7 @@
 package W10;
 public class Ciastko {
     int waga;
+    static int staticParamentr=0;
     String skladnik;
     Ciastko(String input){
         this.waga= (int) (10+Math.random()*10);
