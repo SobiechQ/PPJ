@@ -10,8 +10,10 @@ public class Main {
 
 
         //Console Graphics class showcase.
+
+        //add method.
         {
-            ClonsoleGraphics c = new ClonsoleGraphics(124, 58);
+            ClonsoleGraphics c = new ClonsoleGraphics(80, 30);
             //On generated object with 60 by 30 dimension, I can find at random 2 points.
             double[] randomPointA = c.generateRandomPoint();
             double[] randomPointB = c.generateRandomPoint();
@@ -29,6 +31,30 @@ public class Main {
             c.add(new double[]{-3, -3});
 
             //now I can draw given array.
+            c.show();
+        }
+
+        //addSin method.
+        {
+            ClonsoleGraphics c = new ClonsoleGraphics(80,30);
+            c.addSin(new double[]{10,0.2,-3});
+            c.addSin(new double[]{-10,0.2,3});
+            c.show();
+        }
+        //addTan method.
+        {
+            ClonsoleGraphics c = new ClonsoleGraphics(80,30);
+            c.addTan(new double[]{1.9,0.1,0});
+            c.show();
+        }
+        //addEquation method.
+        {
+            ClonsoleGraphics c = new ClonsoleGraphics(80,30);
+//            c.addEquation(new double[]{0.05,0,0});
+//            c.addEquation(new double[]{0.01,0,0,-3});
+            c.addEquation(new double[]{0.02,0,-12});
+            c.addEquation(new double[]{0.01,-0.1,-0.8,5});
+//            c.addEquation(new double[]{0.01,0.1,0.5,5});
             c.show();
         }
     }

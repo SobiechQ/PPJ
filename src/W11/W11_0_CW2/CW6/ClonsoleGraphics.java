@@ -101,7 +101,6 @@ public class ClonsoleGraphics {
         /*adds a given char into arr[][] on given coordinates;
         to be used by add(double[], double[]), with 1 and 2 being its space characters.
         If used by add(double[]), space is default MAIN.SPACE_DRAW char.*/
-        //todo protect from loop.
 
         //looking for index numbers of given values;
         try {
@@ -128,6 +127,46 @@ public class ClonsoleGraphics {
         this.add(pointA, 'A');
         this.add(pointB, 'B');
     }
+    public void addSin(double[] parameters){
+        //parameters[0] is a, and parameters[1] is b, and parameters[2] is c.
+        //y=a*Sin(bx)+c equation.
+        for (int x:this.domain) {
+            int y = (int) Math.round(parameters[0]*Math.sin(x*parameters[1])+parameters[2]);
+            add(new double[]{x,y});
+        }
+    }
+    public void addTan(double[] parameters){
+        //parameters[0] is a, and parameters[1] is b, and parameters[2] is c.
+        //y=a*Tan(bx)+c equation.
+        for (int x:this.domain) {
+            int y = (int) Math.round(parameters[0]*Math.tan(x*parameters[1])+parameters[2]);
+            add(new double[]{x,y});
+        }
+    }
+    public void addEquation(double[] parameters){
+        /*Array parameters can be any length long.
+        parameters[0] is a, parameters[1] is b...
+        adds a*x^n + b*x^(n-1) + cx^(n-2) + dx^(n-3)... + last
+        last is last in array value;
+        n is the parameters.length-1 value*/
+        for (int x:this.domain) {
+            int tmpPower=parameters.length-1;
+            int tmpSum=0;
+            int i=0;
+            while (tmpPower>=0){
+                tmpSum+=parameters[i++]*Math.pow(x,tmpPower);
+                tmpPower--;
+            }
+//            tmpSum+=parameters[parameters.length-1]/2;
+            int y = (int) Math.round(tmpSum);
+            add(new double[]{x,y});
+
+        }
+
+
+    }
+
+
 
     public void add(double[] pointA, double[] pointB, double[] equation) {
         /* runs add(double[], double[]), and also draws a line equation based on a and b parameters.
