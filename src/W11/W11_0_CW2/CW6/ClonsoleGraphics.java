@@ -26,7 +26,6 @@ public class ClonsoleGraphics {
         for (int i = 0; i < this.setOfValues.length; i++) {
             this.setOfValues[i]=tmpVal--;
         }
-
         clearArr();
     }
     public void clearArr(){
@@ -64,9 +63,6 @@ public class ClonsoleGraphics {
             System.out.print(" ");
         }
         System.out.println("y "+this.setOfValues[0]);
-
-
-
         for (int i = 0; i < this.arr.length; i++) {
             if(i!=this.height/2){
                 System.out.print("    ");
@@ -88,10 +84,7 @@ public class ClonsoleGraphics {
         for (int i = 0; i < (this.arr[0].length)*2+8; i++)
             System.out.print("=");
         System.out.println(" ");
-
     }
-
-
     public void add(double[] pointA){
         //adds a point into arr[][] on given coordinates as a default SPACE_DRAW;
         //Redirects into add(double[], char).
@@ -118,8 +111,6 @@ public class ClonsoleGraphics {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
-
-
     }
     public void add(double[] pointA, double[] pointB){
         //Overrides add(double[]) with add(double[], double[]).
@@ -160,14 +151,8 @@ public class ClonsoleGraphics {
 //            tmpSum+=parameters[parameters.length-1]/2;
             int y = (int) Math.round(tmpSum);
             add(new double[]{x,y});
-
         }
-
-
     }
-
-
-
     public void add(double[] pointA, double[] pointB, double[] equation) {
         /* runs add(double[], double[]), and also draws a line equation based on a and b parameters.
         y=ax+b. where a is equation[0] and b is equation[1].

@@ -3,12 +3,10 @@ package W11.W11_0_CW2.CW6;
 import java.util.Arrays;
 
 public class Main {
-    public static final char SPACE_EMPTY ='\u2591';
-    public static final char SPACE_LINE='\u2593';
+    public static final char SPACE_EMPTY ='\u2591'; // ░
+    public static final char SPACE_LINE='\u2593'; // ▓
     public static final char SPACE_DRAW='*';
     public static void main(String[] args) {
-
-
         //Console Graphics class showcase.
 
         //add method.
@@ -33,7 +31,6 @@ public class Main {
             //now I can draw given array.
             c.show();
         }
-
         //addSin method.
         {
             ClonsoleGraphics c = new ClonsoleGraphics(80,30);
