@@ -3,8 +3,8 @@ package W11.W11_0_CW2.CW6;
 import java.util.Arrays;
 
 public class Main {
-    public static final char SPACE_EMPTY ='\u2591'; // ░
-    public static final char SPACE_LINE='\u2593'; // ▓
+    public static final char SPACE_EMPTY ='-'; // -
+    public static final char SPACE_LINE='▓'; // ▓
     public static final char SPACE_DRAW='*';
     public static void main(String[] args) {
         //Console Graphics class showcase.
@@ -52,6 +52,7 @@ public class Main {
             c.addEquation(new double[]{0.02,0,-12});
             c.addEquation(new double[]{0.01,-0.1,-0.8,5});
 //            c.addEquation(new double[]{0.01,0.1,0.5,5});
+            c.add(new double[]{-10,5},new double[]{0, -15});
             c.show();
         }
     }
