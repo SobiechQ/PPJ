@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class Math {
+    //
     private int a;
     private int b;
     public Math(int a, int b) {
