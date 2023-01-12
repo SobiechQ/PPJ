@@ -3,8 +3,8 @@ package W11.W11_0_CW2.CW6;
 public class ClonsoleGraphics {
     private int width;
     private int height;
-    private int[] domain;
-    private int[] setOfValues;
+    private int[] domain; //x
+    private int[] setOfValues; //y
     private char[][] arr;
     public ClonsoleGraphics(int width, int height) {
         if(width%2==0)
@@ -92,7 +92,7 @@ public class ClonsoleGraphics {
     }
     private void add(double[] pointA, char space) {
         /*adds a given char into arr[][] on given coordinates;
-        to be used by add(double[], double[]), with 1 and 2 being its space characters.
+        to be used by add(double[], double[]), with 1 and 2 being its space characters, and on trapez adding,
         If used by add(double[]), space is default MAIN.SPACE_DRAW char.*/
 
         //looking for index numbers of given values;
@@ -164,5 +164,27 @@ public class ClonsoleGraphics {
         //runs the overridden add.
         this.add(pointA, pointB);
     }
-
+    public void add(double[][] pointSet){
+        /*
+            Adds a trapeze between given points from pointSet.
+         */
+        for (int i = 0; i < pointSet.length; i++) {
+            add(pointSet[i],(char)(i+'1'));
+        }
+        double[] left=calculateEquation(pointSet[0],pointSet[1]);
+        double[] right=calculateEquation(pointSet[2],pointSet[3]);
+        double[] up=calculateEquation(pointSet[0],pointSet[2]);
+        double[] down=calculateEquation(pointSet[1],pointSet[3]);
+        for(int x:this.domain){
+            for(int y:this.setOfValues){
+                if(left[0]*x+left[1]>=y&&
+                        right[0]*x+right[1]>=y&&
+                        up[0]*x+up[1]>=y&&
+                        down[0]*x+down[1]<=y
+                ){
+                    add(new double[]{x,y});
+                }
+            }
+        }
+    }
 }
