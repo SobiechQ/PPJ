@@ -25,6 +25,7 @@ public class Player {
     public void updatePos(int x, int y){
         this.x=x;
         this.y=y;
+
     }
     public char getBody() {
         return body;

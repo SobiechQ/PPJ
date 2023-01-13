@@ -23,6 +23,7 @@ public class ClonsoleGraphics {
         for (int i = 0; i < this.domain.length; i++) {
             this.domain[i]=tmpVal++;
         }
+
         //set of values
         tmpVal=this.height/2;
         for (int i = 0; i < this.setOfValues.length; i++) {

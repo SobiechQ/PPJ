@@ -244,6 +244,7 @@ public class Main{
         for (boolean b :
                 lfr) {
             System.out.println(b);
+
         }
         System.out.println("x:"+player.x+", y:"+player.y);
     }
