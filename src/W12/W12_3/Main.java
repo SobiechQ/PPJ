@@ -1,12 +1,14 @@
 package W12.W12_3;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main{
     public static final char EMPTY='\u2588';//█
     public static final char SYMBOL='\u2591';//░
+    public static final char SPACE_DRAW='*';
     public static void main(String[] args) {
-        int size = 15;
+        int size = 20;
         int total= (int) (Math.pow(size,2)/5);
         char[][] mapArr = new char[size][size];
         for (int i = 0; i < mapArr.length; i++) {
@@ -151,8 +153,12 @@ public class Main{
                 case 'a'->{
                     for (int i = 0; i < 3; i++)
                         player.addPos();
+                    generateFrame(mapArr,player);
                 }
-                case 'd'-> player.addPos();
+                case 'd'->{
+                    player.addPos();
+                    generateFrame(mapArr,player);
+                }
                 case 'w'->{
                         switch (player.facing%4){
 
@@ -161,15 +167,12 @@ public class Main{
                             case 2->updateArr(mapArr, player,new int[]{1,0});
                             case 3->updateArr(mapArr, player,new int[]{0,-1});
                         }
+                        generateFrame(mapArr,player);
                 }
                 case  'm'->{
                     map(mapArr,player);
                 }
             }
-
-            //todo remove map
-            map(mapArr,player);
-            generateFrame(mapArr,player);
         }while ((c = sc.next().charAt(0))!='q');
     }
     public static void updateArr(char[][] input, Player player, int[] vector){
@@ -194,6 +197,9 @@ public class Main{
     }
     public static void generateFrame(char[][] input,Player player){
         boolean[] lfr = new boolean[3];
+        for (int i = 0; i < 3; i++) {
+            lfr[i]=true;
+        }
         // lfr
         //left front right
         //true - wall.
@@ -202,51 +208,84 @@ public class Main{
                 //facing up.
 
                 //left
-                lfr[0]=input[player.x][player.y-1]==SYMBOL;
+                if (player.y-1>=0) {
+                    lfr[0]=input[player.x][player.y-1]==SYMBOL;
+                }
                 //front
-                lfr[1]=input[player.x-1][player.y]==SYMBOL;
+                if (player.x-1>=0) {
+                    lfr[1]=input[player.x-1][player.y]==SYMBOL;
+                }
                 //right
-                lfr[2]=input[player.x][player.y+1]==SYMBOL;
+                if (player.y+1<=input[player.x].length-1) {
+                    lfr[2]=input[player.x][player.y+1]==SYMBOL;
+                }
 
             }
             case 1->{
                 //facing right.
 
                 //left
-                lfr[0]=input[player.x-1][player.y]==SYMBOL;
+                if (player.x-1>=0) {
+                    lfr[0]=input[player.x-1][player.y]==SYMBOL;
+                }
                 //front
-                lfr[1]=input[player.x][player.y+1]==SYMBOL;
+                if (player.y+1<=input[player.x].length-1) {
+                    lfr[1]=input[player.x][player.y+1]==SYMBOL;
+                }
                 //right
-                lfr[2]=input[player.x+1][player.y]==SYMBOL;
+                if (player.x+1<=input.length-1) {
+                    lfr[2]=input[player.x+1][player.y]==SYMBOL;
+                }
             }
             case 2->{
                 //facing down.
 
                 //left
-                lfr[0]=input[player.x][player.y+1]==SYMBOL;
+                if (player.y+1<=input[player.x].length-1) {
+                    lfr[0]=input[player.x][player.y+1]==SYMBOL;
+                }
                 //front
-                lfr[1]=input[player.x+1][player.y]==SYMBOL;
+                if (player.x+1<=input.length-1) {
+                    lfr[1]=input[player.x+1][player.y]==SYMBOL;
+                }
                 //right
-                lfr[2]=input[player.x][player.y-1]==SYMBOL;
+                if (player.y-1>=0) {
+                    lfr[2]=input[player.x][player.y-1]==SYMBOL;
+                }
 
             }
             case 3->{
                 //facing right.
 
                 //left
-                lfr[0]=input[player.x+1][player.y]==SYMBOL;
+                if (player.x+1<=input.length-1) {
+                    lfr[0]=input[player.x+1][player.y]==SYMBOL;
+                }
                 //front
-                lfr[1]=input[player.x][player.y-1]==SYMBOL;
+                if (player.y-1>=0) {
+                    lfr[1]=input[player.x][player.y-1]==SYMBOL;
+                }
                 //right
-                lfr[2]=input[player.x-1][player.y]==SYMBOL;
+                if (player.x-1>=0) {
+                    lfr[2]=input[player.x-1][player.y]==SYMBOL;
+                }
             }
         }
-        for (boolean b :
-                lfr) {
-            System.out.println(b);
+        ClonsoleGraphics c = new ClonsoleGraphics(170,30);
+        c.whiteSpace();
 
-        }
-        System.out.println("x:"+player.x+", y:"+player.y);
+        double[][] center = new double[][]{{-7,4},{-7,-4},{7,4},{7,-4}};
+        double[][] left = new double[][]{{-50,15},{-50,-15},{-9,4},{-9,-4}};
+        double[][] right = new double[][]{{9,4},{9,-4},{50,15},{50,-15}};
+        double[][] down = new double[][]{{-9,-6},{-48,-15},{9,-6},{48,-15}};
+        double[][] up = new double[][]{{-48,15},{-9,6},{48,15},{9,6}};
+
+        c.add(left,lfr[0]?'\u2588':'\u2591');
+        c.add(center,lfr[1]?'\u2588':'\u2591');
+        c.add(right,lfr[2]?'\u2588':'\u2591');
+        c.add(down,'\u2593');
+        c.add(up,'\u2593');
+        c.show(false);
     }
 
 }
