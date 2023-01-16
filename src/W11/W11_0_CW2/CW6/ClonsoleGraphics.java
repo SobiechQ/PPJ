@@ -177,13 +177,14 @@ public class ClonsoleGraphics {
         double[] down=calculateEquation(pointSet[1],pointSet[3]);
         for(int x:this.domain){
             for(int y:this.setOfValues){
-                if(left[0]*x+left[1]>=y&&
-                        right[0]*x+right[1]>=y&&
-                        up[0]*x+up[1]>=y&&
-                        down[0]*x+down[1]<=y
-                ){
-                    add(new double[]{x,y});
-                }
+                //bugged
+//                if(left[0]*x+left[1]>=y&&
+//                        right[0]*x+right[1]>=y&&
+//                        up[0]*x+up[1]>=y&&
+//                        down[0]*x+down[1]<=y
+//                ){
+//                    add(new double[]{x,y});
+//                }
             }
         }
     }

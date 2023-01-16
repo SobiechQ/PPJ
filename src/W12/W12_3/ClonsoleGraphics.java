@@ -1,6 +1,7 @@
 package W12.W12_3;
 
-import W11.W11_0_CW2.CW6.Main;
+
+import java.util.Arrays;
 
 public class ClonsoleGraphics {
     private int width;
@@ -45,6 +46,14 @@ public class ClonsoleGraphics {
         }
 
     }
+    public void whiteSpace(){
+        //sets all chars as whitespace characters.
+        for (int i = 0; i < this.arr.length; i++) {
+            for (int j = 0; j < this.arr[0].length; j++) {
+                this.arr[i][j]=' ';
+            }
+        }
+    }
     public double[] generateRandomPoint(){
         //Generates array with 2 numbers indicating random points on the map.
         double[] output = new double[2];
@@ -61,7 +70,7 @@ public class ClonsoleGraphics {
         return output;
     }
     public void show() {
-        //Draws array as it is.
+        //Draws array as it is. with additional information
         for (int i = 0; i < this.arr[0].length+3; i++) {
             System.out.print(" ");
         }
@@ -87,6 +96,19 @@ public class ClonsoleGraphics {
         for (int i = 0; i < (this.arr[0].length)*2+8; i++)
             System.out.print("=");
         System.out.println(" ");
+    }
+    public void show(boolean state){
+        //for false state prints array without additional information.
+        if(state) {
+            this.show();
+            return;
+        }
+        for (int i = 0; i < this.arr.length; i++) {
+            for (int j = 0; j < this.arr[0].length; j++) {
+                System.out.print(this.arr[i][j]);
+            }
+            System.out.println(" ");
+        }
     }
     public void add(double[] pointA){
         //adds a point into arr[][] on given coordinates as a default SPACE_DRAW;
@@ -167,7 +189,7 @@ public class ClonsoleGraphics {
         //runs the overridden add.
         this.add(pointA, pointB);
     }
-    public void add(double[][] pointSet){
+    public void add(double[][] pointSet,char fill){
         /*
             Adds a trapeze between given points from pointSet.
          */
@@ -178,16 +200,126 @@ public class ClonsoleGraphics {
         double[] right=calculateEquation(pointSet[2],pointSet[3]);
         double[] up=calculateEquation(pointSet[0],pointSet[2]);
         double[] down=calculateEquation(pointSet[1],pointSet[3]);
-        for(int x:this.domain){
-            for(int y:this.setOfValues){
-                if(left[0]*x+left[1]>=y&&
-                        right[0]*x+right[1]>=y&&
-                        up[0]*x+up[1]>=y&&
-                        down[0]*x+down[1]<=y
-                ){
-                    add(new double[]{x,y});
+        if(!(Double.isInfinite(right[0]))&&!(Double.isInfinite(left[0]))&&left[0]>0&&right[0]<0){
+            for(int x:this.domain){
+                for(int y:this.setOfValues){
+                    if(left[0]*x+left[1]>=y&&
+                            right[0]*x+right[1]>=y&&
+                            up[0]*x+up[1]>=y&&
+                            down[0]*x+down[1]<=y
+                    ){
+                        add(new double[]{x,y},fill);
+                    }
                 }
             }
+            return;
+        } if(!(Double.isInfinite(right[0]))&&!(Double.isInfinite(left[0]))&&left[0]>0&&right[0]>0) {
+            for(int x:this.domain){
+                for(int y:this.setOfValues){
+                    if(left[0]*x+left[1]>=y&&
+                            right[0]*x+right[1]<=y&&
+                            up[0]*x+up[1]>=y&&
+                            down[0]*x+down[1]<=y
+                    ){
+                        add(new double[]{x,y},fill);
+                    }
+                }
+            }
+            return;
+        } if(!(Double.isInfinite(right[0]))&&!(Double.isInfinite(left[0]))&&left[0]<0&&right[0]>0) {
+            for(int x:this.domain){
+                for(int y:this.setOfValues){
+                    if(left[0]*x+left[1]<=y&&
+                            right[0]*x+right[1]<=y&&
+                            up[0]*x+up[1]>=y&&
+                            down[0]*x+down[1]<=y
+                    ){
+                        add(new double[]{x,y},fill);
+                    }
+                }
+            }
+            return;
+        } if(!(Double.isInfinite(right[0]))&&!(Double.isInfinite(left[0]))&&left[0]<0&&right[0]<0) {
+            for (int x : this.domain) {
+                for (int y : this.setOfValues) {
+                    if (left[0] * x + left[1] <= y &&
+                            right[0] * x + right[1] >= y &&
+                            up[0] * x + up[1] >= y &&
+                            down[0] * x + down[1] <= y
+                    ) {
+                        add(new double[]{x, y},fill);
+                    }
+                }
+            }
+            return;
+        }
+        if (!(Double.isInfinite(right[0]))&& Double.isInfinite(left[0]) && right[0] < 0) {
+            for (int x : this.domain) {
+                for (int y : this.setOfValues) {
+                    if (x>=pointSet[0][0]&&
+                            right[0] * x + right[1] >= y &&
+                            up[0] * x + up[1] >= y &&
+                            down[0] * x + down[1] <= y
+                    ) {
+                        add(new double[]{x, y},fill);
+                    }
+                }
+            }
+            return;
+        } if (!(Double.isInfinite(right[0]))&& Double.isInfinite(left[0]) && right[0] > 0) {
+            for (int x : this.domain) {
+                for (int y : this.setOfValues) {
+                    if (x>=pointSet[0][0]&&
+                            right[0] * x + right[1] <= y &&
+                            up[0] * x + up[1] >= y &&
+                            down[0] * x + down[1] <= y
+                    ) {
+                        add(new double[]{x, y},fill);
+                    }
+                }
+            }
+            return;
+        } if (Double.isInfinite(left[0]) && Double.isInfinite(right[0])) {
+            for (int x : this.domain) {
+                for (int y : this.setOfValues) {
+                    if (x>=pointSet[0][0]&&
+                            x<=pointSet[2][0] &&
+
+
+                            up[0] * x + up[1] >= y &&
+                            down[0] * x + down[1] <= y
+                    ) {
+                        add(new double[]{x, y},fill);
+                    }
+                }
+            }
+//            return;
+        } if(!(Double.isInfinite(left[0]))&& left[0]>0&&Double.isInfinite(right[0])){
+            for(int x:this.domain){
+                for(int y:this.setOfValues){
+                    if(left[0]*x+left[1]>=y&&
+                            x<=pointSet[3][0]&&
+                            up[0]*x+up[1]>=y&&
+                            down[0]*x+down[1]<=y
+                    ){
+                        add(new double[]{x,y},fill);
+                    }
+                }
+            }
+            return;
+        } if(!(Double.isInfinite(left[0]))&& left[0]<0&&Double.isInfinite(right[0])){
+            for(int x:this.domain){
+                for(int y:this.setOfValues){
+                    if(left[0]*x+left[1]<=y&&
+                            x<=pointSet[3][0]&&
+                            up[0]*x+up[1]>=y&&
+                            down[0]*x+down[1]<=y
+                    ){
+                        add(new double[]{x,y},fill);
+                    }
+                }
+            }
+            return;
         }
     }
 }
