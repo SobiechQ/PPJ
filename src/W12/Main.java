@@ -55,8 +55,8 @@ public class Main {
             System.out.println(objects[55]);
             System.out.println("To sie nie wykona");
         } catch (ArrayIndexOutOfBoundsException e){
-            //podaje miejsce błędu.
-            e.printStackTrace();
+            //podaje miejsce błędu
+            System.out.println("BLAD!!!!!!1"+ e.getMessage());
         }
         //throw pozwala nam podnoszenie własnych wyjątków.
 
