@@ -1,4 +1,4 @@
-package w4;
+package W12.W12_0_CW1.CW4;
 
 public class Telefon {
     String interfejsKompunkacyjny;

@@ -1,7 +1,4 @@
 package W12.W12_0_CW1.CW5;
-
-import w3.EmptyNumberExeption;
-
 public class Main {
     public static void main(String[] args) {
         Komorka komorka = new Komorka();

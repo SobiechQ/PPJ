@@ -1,4 +1,4 @@
-package w2;
+package W12.W12_0_CW1.CW2;
 
 public class Main {
     public static void main(String[] args) {

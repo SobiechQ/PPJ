@@ -1,7 +1,4 @@
-package w4;
-
-import w3.EmptyNumberExeption;
-import w3.Telefon;
+package W12.W12_0_CW1.CW4;
 
 public class Komorka extends Telefon {
     String[] ostatnie = new String[10];

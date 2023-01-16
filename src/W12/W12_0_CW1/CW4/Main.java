@@ -1,6 +1,4 @@
-package w4;
-
-import w3.EmptyNumberExeption;
+package W12.W12_0_CW1.CW4;
 
 public class Main {
     public static void main(String[] args) {
