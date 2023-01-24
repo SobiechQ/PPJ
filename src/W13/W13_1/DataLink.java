@@ -1,6 +1,8 @@
 package W13.W13_1;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Objects;
 
 public class DataLink {
@@ -29,6 +31,17 @@ public class DataLink {
         System.out.println(" ");
         System.out.println("Podano: " + password);
         System.out.println(" ");
+        User user = new User(name, password);
+
+        try {
+            FileWriter fw = new FileWriter(file.getAbsolutePath());
+            fw.write("user:"+user.getLogin()+":pass:"+user.getPassword());
+            fw.flush();
+            fw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
     }
