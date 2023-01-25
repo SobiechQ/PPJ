@@ -10,7 +10,7 @@ public class Student
     //klasa bardziej wyspecjalizowana (klasa pochodna)
     protected int sNumber;
     public void getOba(){
-        System.out.println("z klasy student ("+this.jestWObu+"), Z klasy person ("+super.jestWObu+")");
+        System.out.println("z klasy student ("+jestWObu+"), Z klasy person ("+super.jestWObu+")");
         //Super pozwala odwołać si e doo składników widocznych w jej klasie bazowej.
     }
     public void draw(){
