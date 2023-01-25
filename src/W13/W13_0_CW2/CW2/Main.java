@@ -15,13 +15,8 @@ public class Main {
         }
         try {
             pnwReader.draw();
-        } catch (IllegalStateException e) {
-            System.out.println("Pierwsze");
-        }
-        try {
-            pnwReader.draw();
-        } catch (IllegalStateException e) {
-            System.out.println("Nie można, bo wykonano już wcześniej");
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -6,9 +6,9 @@ import java.io.IOException;
 public class PNWReader {
 
 
-    static final int primeInput = 0;
-    static final int armstrongInput = 0;
-    static final int wordInput = 0;
+    static final int PRIME_INPUT = 0;
+    static final int armstrongInput = 1;
+    static final int wordInput = 2;
     int toShow;
     boolean allowed = true;
     /*
