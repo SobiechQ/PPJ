@@ -1,7 +1,7 @@
 package W15.W15_6;
 
 public class MyList {
-    public static int length = 10;
+    public static int length = 0;
     private static final Element head = new Element(length++);
     private static Element tmp = head;
     public static void addElementX(int posY){
@@ -35,21 +35,21 @@ public class MyList {
     }
     public static void addElementSquare(int posY, int posX){
         resetTmp();
-        for (int i = 0; i <= posY; i++) {
+        Element localTmp = tmp;
+        for (int i = 0; i < posY; i++) {
             int yListLength=0;
+            Element startOfList = localTmp;
             do{
-                tmp=tmp.getNextElementX();
+                localTmp=localTmp.getNextElementX();
                 yListLength++;
-            }while (tmp!=null);
-
+            }while (localTmp!=null);
+            localTmp = startOfList;
             for (int j = 0; j < posX-yListLength; j++) {
                 addElementX(i);
-                //todo nowe pointery wskazują na początek listy
             }
-            if(tmp.getNextElementY()==null)
+            if(localTmp.getNextElementY()==null && (i+1)!=posY)
                 addElementY();
-            tmp.getNextElementY().getIndex();
-            tmp=tmp.getNextElementY();
+            localTmp=localTmp.getNextElementY();
 
         }
         resetTmp();
